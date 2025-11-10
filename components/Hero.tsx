@@ -34,20 +34,8 @@ export function Hero({
   const cta = primaryCTA || defaultPrimaryCTA;
   const videoRef = useRef<HTMLVideoElement>(null);
   
-  // Noms de vidéo possibles (le premier trouvé sera utilisé)
-  const possibleVideoNames = [
-    "/images/hero/hero-video.mp4",
-    "/images/hero/video.mp4",
-    "/images/hero/hero.mp4",
-    "/images/hero/hero-video.mov",
-    "/images/hero/video.mov",
-    "/images/hero/hero.mov",
-    "/images/hero/hero-video.webm",
-    "/images/hero/video.webm",
-  ];
-  
-  // Utiliser la première vidéo disponible (sera vérifiée côté client)
-  const [videoSrc] = useState<string | null>(possibleVideoNames[0] || null);
+  // Vidéo hero - priorité à hero-video.mp4
+  const [videoSrc] = useState<string | null>("/images/hero/hero-video.mp4");
 
   return (
     <section className="relative w-full h-[70vh] min-h-[500px] max-h-[800px] overflow-hidden flex items-center justify-center">

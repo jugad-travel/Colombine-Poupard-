@@ -107,26 +107,26 @@ export default function CabinetAccesPage() {
               Le cabinet
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* Images du cabinet - avec fallback gracieux */}
-              {["cabinet-1.jpg", "cabinet-2.jpg", "facade.jpg"].map((imgName, index) => {
-                const isFacade = imgName === "facade.jpg";
+              {/* Images du cabinet - support .webp et .jpg */}
+              {[
+                { name: "cabinet-1", alt: "Cabinet d'ostéopathie - Intérieur" },
+                { name: "facade", alt: "Façade du cabinet d'ostéopathie", fullWidth: true },
+              ].map((img, index) => {
+                // Essayer .webp d'abord, puis .jpg
+                const imgSrc = `/images/cabinet/${img.name}.webp`;
                 return (
                   <div
-                    key={imgName}
+                    key={img.name}
                     className={`relative w-full h-[400px] bg-brand-100 rounded-2xl overflow-hidden group ${
-                      isFacade ? "md:col-span-2" : ""
+                      img.fullWidth ? "md:col-span-2" : ""
                     }`}
                   >
                     <Image
-                      src={`/images/cabinet/${imgName}`}
-                      alt={
-                        isFacade
-                          ? "Façade du cabinet d'ostéopathie"
-                          : `Cabinet d'ostéopathie - ${index + 1}`
-                      }
+                      src={imgSrc}
+                      alt={img.alt}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-105"
-                      sizes={isFacade ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
+                      sizes={img.fullWidth ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
                       priority={index < 2}
                     />
                   </div>
