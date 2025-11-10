@@ -88,8 +88,8 @@ export function Hero({
         )}
         {/* Overlay léger sur la vidéo */}
         <div className="absolute inset-0 bg-gradient-to-l from-black/30 to-transparent z-20 pointer-events-none" />
-        {/* Masquer le logo Grok en bas - overlay plus large */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-28 bg-gradient-to-t from-[#a4897b] via-[#a4897b] to-[#a4897b]/80 z-30 pointer-events-none" />
+        {/* Masquer le logo Grok en bas - dégradé subtil */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#a4897b] via-[#a4897b]/95 to-transparent z-30 pointer-events-none" />
       </div>
 
       {/* Contenu avec animations - Positionné à gauche */}
@@ -131,7 +131,7 @@ export function Hero({
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="hidden sm:inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-700 to-brand-800 hover:from-brand-800 hover:to-brand-900 text-white px-8 py-4 rounded-3xl font-medium shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
+                    className="hidden sm:inline-flex items-center justify-center gap-2 bg-brand-700 hover:bg-brand-900 text-white px-8 py-4 rounded-3xl font-medium shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
                   >
                     <Calendar size={20} />
                     {cta.label}
@@ -144,7 +144,7 @@ export function Hero({
                   >
                     <Link
                       href={cta.href}
-                      className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-700 to-brand-800 hover:from-brand-800 hover:to-brand-900 text-white px-8 py-4 rounded-3xl font-medium shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
+                      className="inline-flex items-center justify-center gap-2 bg-brand-700 hover:bg-brand-900 text-white px-8 py-4 rounded-3xl font-medium shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
                     >
                       <Calendar size={20} />
                       {cta.label}
