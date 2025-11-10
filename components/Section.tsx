@@ -22,17 +22,17 @@ export function Section({
   };
 
   return (
-    <section className={`${bgClasses[bg]} py-12 lg:py-16 ${className}`}>
+    <section className={`${bgClasses[bg]} py-8 sm:py-12 lg:py-16 ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {(title || kicker) && (
-          <div className="mb-8 lg:mb-12">
+          <div className="mb-8 sm:mb-12 lg:mb-16">
             {kicker && (
-              <p className="text-sm font-semibold text-brand-700 uppercase tracking-wide mb-2">
+              <p className="text-xs sm:text-sm font-semibold text-brand-700 uppercase tracking-wide mb-2 sm:mb-3">
                 {kicker}
               </p>
             )}
             {title && (
-              <h2 className="text-3xl lg:text-4xl font-serif font-bold text-brand-900">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold bg-gradient-to-r from-brand-900 via-brand-700 to-brand-900 bg-clip-text text-transparent">
                 {title}
               </h2>
             )}

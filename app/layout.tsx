@@ -35,7 +35,7 @@ export default function RootLayout({
         className={`${inter.variable} ${playfair.variable} antialiased`}
       >
         <Navbar />
-        <main className="min-h-screen">
+        <main className="min-h-screen" style={{ margin: 0, padding: 0 }}>
           {children}
         </main>
         <Footer />
