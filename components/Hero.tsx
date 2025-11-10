@@ -59,6 +59,7 @@ export function Hero({
               preload="auto"
               webkit-playsinline="true"
               x5-playsinline="true"
+              poster="/images/hero/hero-image.webp"
               className="w-full h-full object-contain"
               style={{
                 objectPosition: "center center",
@@ -70,6 +71,12 @@ export function Hero({
                 video.play().catch(() => {
                   // Si autoplay échoue, on peut essayer de jouer après interaction
                 });
+              }}
+              onPlay={() => {
+                // Masquer le poster une fois que la vidéo démarre
+                if (videoRef.current) {
+                  videoRef.current.style.opacity = "1";
+                }
               }}
             >
               <source src={videoSrc} type={`video/${videoSrc.split('.').pop()}`} />
@@ -124,7 +131,7 @@ export function Hero({
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="hidden sm:inline-flex items-center justify-center gap-2 bg-brand-700 hover:bg-brand-900 text-white px-8 py-4 rounded-3xl font-medium shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
+                    className="hidden sm:inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-700 to-brand-800 hover:from-brand-800 hover:to-brand-900 text-white px-8 py-4 rounded-3xl font-medium shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
                   >
                     <Calendar size={20} />
                     {cta.label}
@@ -137,7 +144,7 @@ export function Hero({
                   >
                     <Link
                       href={cta.href}
-                      className="inline-flex items-center justify-center gap-2 bg-brand-700 hover:bg-brand-900 text-white px-8 py-4 rounded-3xl font-medium shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
+                      className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-brand-700 to-brand-800 hover:from-brand-800 hover:to-brand-900 text-white px-8 py-4 rounded-3xl font-medium shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
                     >
                       <Calendar size={20} />
                       {cta.label}
