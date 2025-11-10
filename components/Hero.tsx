@@ -56,10 +56,20 @@ export function Hero({
               muted
               loop
               playsInline
+              preload="auto"
+              webkit-playsinline="true"
+              x5-playsinline="true"
               className="w-full h-full object-contain"
               style={{
                 objectPosition: "center center",
                 zIndex: 10,
+              }}
+              onLoadedData={(e) => {
+                // Forcer la lecture sur mobile
+                const video = e.target as HTMLVideoElement;
+                video.play().catch(() => {
+                  // Si autoplay échoue, on peut essayer de jouer après interaction
+                });
               }}
             >
               <source src={videoSrc} type={`video/${videoSrc.split('.').pop()}`} />
@@ -71,8 +81,8 @@ export function Hero({
         )}
         {/* Overlay léger sur la vidéo */}
         <div className="absolute inset-0 bg-gradient-to-l from-black/30 to-transparent z-20 pointer-events-none" />
-        {/* Masquer le logo Grok en bas */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#a4897b] via-[#a4897b]/95 to-transparent z-30 pointer-events-none" />
+        {/* Masquer le logo Grok en bas - overlay plus large */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-28 bg-gradient-to-t from-[#a4897b] via-[#a4897b] to-[#a4897b]/80 z-30 pointer-events-none" />
       </div>
 
       {/* Contenu avec animations - Positionné à gauche */}
