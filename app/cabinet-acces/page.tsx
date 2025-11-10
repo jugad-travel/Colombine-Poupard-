@@ -4,6 +4,7 @@ import { generateMetadata as genMeta } from "@/lib/seo";
 import { generateLocalBusinessSchema } from "@/lib/schema";
 import { PRACTICE_INFO } from "@/lib/constants";
 import { MapPin, Bus, Car, Building } from "lucide-react";
+import Image from "next/image";
 
 export const metadata = genMeta({
   title: "Cabinet & Accès",
@@ -100,18 +101,37 @@ export default function CabinetAccesPage() {
             </div>
           </div>
 
-          {/* Galerie (placeholder) */}
+          {/* Galerie */}
           <div>
             <h2 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
               Le cabinet
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-brand-100 rounded-2xl p-8 text-center">
-                <p className="text-muted">Photo du cabinet à venir</p>
-              </div>
-              <div className="bg-brand-100 rounded-2xl p-8 text-center">
-                <p className="text-muted">Photo de la façade à venir</p>
-              </div>
+              {/* Images du cabinet - avec fallback gracieux */}
+              {["cabinet-1.jpg", "cabinet-2.jpg", "facade.jpg"].map((imgName, index) => {
+                const isFacade = imgName === "facade.jpg";
+                return (
+                  <div
+                    key={imgName}
+                    className={`relative w-full h-[400px] bg-brand-100 rounded-2xl overflow-hidden group ${
+                      isFacade ? "md:col-span-2" : ""
+                    }`}
+                  >
+                    <Image
+                      src={`/images/cabinet/${imgName}`}
+                      alt={
+                        isFacade
+                          ? "Façade du cabinet d'ostéopathie"
+                          : `Cabinet d'ostéopathie - ${index + 1}`
+                      }
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes={isFacade ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
+                      priority={index < 2}
+                    />
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
