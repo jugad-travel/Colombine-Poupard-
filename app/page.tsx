@@ -294,7 +294,7 @@ export default function HomePage() {
           </div>
           <div className="bg-brand-100 rounded-2xl p-4">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2529.8!2d3.0915!3d50.6708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d5e5e5e5e5e5%3A0x5e5e5e5e5e5e5e5e!2s120%20Rue%20du%20Docteur%20Ducroquet%2C%2059700%20Marcq-en-Bar%C5%93ul!5e0!3m2!1sfr!2sfr!4v1234567890"
+              src="https://www.google.com/maps?q=120+Rue+du+Docteur+Ducroquet,+59700+Marcq-en-Barœul&output=embed"
               width="100%"
               height="300"
               style={{ border: 0 }}
