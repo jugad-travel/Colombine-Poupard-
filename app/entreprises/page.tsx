@@ -3,12 +3,12 @@ import { Card } from "@/components/Card";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { generateLocalBusinessSchema } from "@/lib/schema";
 import { PRACTICE_INFO, ENTERPRISE_CLIENTS } from "@/lib/constants";
-import { Building2, Users, Clock, TrendingUp, FileText, Mail } from "lucide-react";
+import { Building2, Mail } from "lucide-react";
 
 export const metadata = genMeta({
   title: "Interventions en entreprise",
   description:
-    "Offre d'ostéopathie en entreprise : séances individuelles, ateliers d'ergonomie, bilans posturaux. Prévention des TMS et amélioration de la qualité de vie au travail. Interventions réalisées pour BCG, AXA, Veolia, Promod, Auchan.",
+    "Offre d'ostéopathie en entreprise : séances individuelles. Prévention des TMS et amélioration de la qualité de vie au travail. Interventions réalisées pour BCG, American Express, AXA, SeLoger.",
   path: "/entreprises",
 });
 
@@ -35,87 +35,47 @@ export default function EntreprisesPage() {
             <div className="space-y-4 text-muted leading-relaxed">
               <p>
                 Les troubles musculo-squelettiques (TMS) représentent la première
-                cause de maladie professionnelle en France. Le travail sédentaire,
-                les postures prolongées, le stress et la répétitivité des gestes
+                cause de maladie professionnelle en France.
+              </p>
+              <p>
+                Le travail sédentaire, les postures prolongées, le stress et la répétitivité des gestes
                 favorisent l'apparition de douleurs et de tensions.
               </p>
               <p>
                 L'ostéopathie en entreprise permet de prévenir ces troubles, de
                 réduire l'absentéisme et d'améliorer la qualité de vie au travail.
-                Elle contribue également à l'engagement des collaborateurs et à la
-                performance globale de l'entreprise.
               </p>
-            </div>
-          </div>
-
-          {/* Formats */}
-          <div>
-            <h2 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
-              Formats d'intervention
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card
-                title="Séances individuelles"
-                icon={<Users size={24} className="text-brand-700" />}
-              >
-                Consultations de 20 à 30 minutes sur site, adaptées aux besoins
-                spécifiques de chaque collaborateur.
-              </Card>
-              <Card
-                title="Ateliers collectifs"
-                icon={<Building2 size={24} className="text-brand-700" />}
-              >
-                Sessions de 45 à 60 minutes sur l'ergonomie, les postures de
-                travail et les exercices de prévention.
-              </Card>
-              <Card
-                title="Bilans posturaux"
-                icon={<FileText size={24} className="text-brand-700" />}
-              >
-                Évaluation posturale individuelle avec recommandations
-                personnalisées pour l'aménagement du poste de travail.
-              </Card>
-              <Card
-                title="Programmes sur mesure"
-                icon={<Clock size={24} className="text-brand-700" />}
-              >
-                Accompagnement sur 6 à 12 semaines avec suivi régulier et
-                ajustements selon les besoins.
-              </Card>
+              <p>
+                La qualité de vie au travail est un véritable levier de performance : des
+                collaborateurs en bonne santé, moins de tensions et plus d'énergie, c'est aussi
+                moins d'arrêts, plus de motivation et un engagement durable au sein de l'entreprise.
+              </p>
             </div>
           </div>
 
           {/* Modalités */}
           <div>
             <h2 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
-              Modalités d'intervention
+              Modalités
             </h2>
             <div className="bg-brand-100 rounded-2xl p-6 lg:p-8">
               <ul className="space-y-3 text-muted">
                 <li className="flex items-start gap-3">
                   <span className="text-brand-700 mt-1">•</span>
                   <span>
-                    Interventions en demi-journées ou journées complètes selon
-                    vos besoins
+                    40 minutes adaptées aux besoins spécifiques de chaque collaborateur.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-brand-700 mt-1">•</span>
                   <span>
-                    Salle dédiée mise à disposition par l'entreprise
+                    Salle dédiée mise à disposition par l'entreprise.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-brand-700 mt-1">•</span>
                   <span>
-                    Planning partagé pour faciliter l'organisation des rendez-vous
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-brand-700 mt-1">•</span>
-                  <span>
-                    Reporting anonymisé sur les motifs de consultation et les
-                    bénéfices observés
+                    Planning partagé pour faciliter l'organisation des rendez-vous.
                   </span>
                 </li>
               </ul>
@@ -132,10 +92,6 @@ export default function EntreprisesPage() {
                 Diminution des troubles musculo-squelettiques et amélioration du
                 confort au travail.
               </Card>
-              <Card title="Meilleure récupération">
-                Optimisation de la récupération après les efforts et réduction de
-                la fatigue.
-              </Card>
               <Card title="Engagement renforcé">
                 Amélioration de la qualité de vie au travail et renforcement de
                 l'engagement des collaborateurs.
@@ -150,12 +106,9 @@ export default function EntreprisesPage() {
           {/* Clients */}
           <div>
             <h2 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
-              Références
+              Ils m'ont fait confiance
             </h2>
             <div className="bg-brand-100 rounded-2xl p-6 lg:p-8">
-              <p className="text-muted mb-4">
-                Interventions réalisées pour :
-              </p>
               <div className="flex flex-wrap gap-3">
                 {ENTERPRISE_CLIENTS.map((client) => (
                   <span
@@ -199,4 +152,3 @@ export default function EntreprisesPage() {
     </>
   );
 }
-

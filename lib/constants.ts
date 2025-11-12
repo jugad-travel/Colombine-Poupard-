@@ -90,10 +90,47 @@ export const PUBLICATION = {
 
 export const ENTERPRISE_CLIENTS = [
   "BCG",
+  "American Express",
   "AXA",
   "SeLoger",
-  "Veolia",
-  "Promod",
-  "Auchan",
+];
+
+export const MOTIFS_CONSULTATION = [
+  {
+    id: "douleurs-osteo",
+    title: "Douleurs ostéo-articulaires",
+    description: "Maux de dos (lombalgies, dorsalgies, cervicalgies), sciatiques, cruralgies, douleurs articulaires (genoux, hanches, épaules, poignets…), tendinites, entorses ou séquelles de traumatismes. Grâce à des techniques ostéo-articulaires et myofasciales, l'ostéopathie restaure la mobilité, réduit les compensations et soulage durablement les tensions.",
+    icon: "Bone",
+  },
+  {
+    id: "troubles-digestifs",
+    title: "Troubles digestifs",
+    description: "Reflux gastriques, brûlures d'estomac, ballonnements, constipation, diarrhée ou douleurs abdominales fonctionnelles. Par des techniques viscérales et myofasciales, l'ostéopathie apaise les tensions abdominales et améliore le confort digestif.",
+    icon: "Heart",
+  },
+  {
+    id: "sphere-cranienne",
+    title: "Sphère crânienne",
+    description: "Céphalées, migraines, acouphènes, bruxisme, troubles de la mâchoire, troubles du sommeil et fatigue persistante. Sinusites chroniques, otites à répétition (en complément d'un suivi médical). Par des manipulations crâniennes et tissulaires douces, l'ostéopathie aide à relâcher les tensions du crâne et des cervicales, favorisant un relâchement global et un apaisement durable.",
+    icon: "Brain",
+  },
+  {
+    id: "sphere-gynecologique",
+    title: "Sphère gynécologique",
+    description: "Règles douloureuses, cycles irréguliers, douleurs pelviennes fonctionnelles, accompagnement de la fertilité, grossesse et post-partum. Par des techniques viscérales et tissulaires adaptées, l'ostéopathie aide à rééquilibrer le bassin, à améliorer la mobilité et à soulager les inconforts liés à la sphère féminine.",
+    icon: "Heart",
+  },
+  {
+    id: "femme-enceinte",
+    title: "Ostéopathie de la femme enceinte",
+    description: "Douleurs lombaires, pelviennes ou ligamentaires, troubles digestifs, essoufflement, fatigue ou inconfort postural. À l'aide de manipulations douces et sécurisées, l'ostéopathie accompagne les transformations du corps pendant la grossesse, favorisant le confort et la mobilité jusqu'à l'accouchement.",
+    icon: "Heart",
+  },
+  {
+    id: "pediatrique",
+    title: "Ostéopathie pédiatrique",
+    description: "Accouchement instrumentalisé (forceps, ventouse, césarienne), asymétries du crâne (plagiocéphalie), torticolis, reflux, coliques, constipation, troubles du sommeil ou agitation. Par des techniques crâniennes et tissulaires très douces, l'ostéopathie aide le nouveau-né à libérer les tensions liées à la naissance et à retrouver équilibre et apaisement.",
+    icon: "Baby",
+  },
 ];
 

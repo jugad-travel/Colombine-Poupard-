@@ -16,8 +16,8 @@ export function generateLocalBusinessSchema() {
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "50.6700",
-      longitude: "3.0900",
+      latitude: "50.6708",
+      longitude: "3.0915",
     },
     telephone: PRACTICE_INFO.phone,
     email: PRACTICE_INFO.email,
