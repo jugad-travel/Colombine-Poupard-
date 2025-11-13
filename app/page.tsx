@@ -191,7 +191,7 @@ export default function HomePage() {
       <section className="bg-brand-100 py-8 sm:py-12 lg:py-16 relative overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8 sm:mb-12 lg:mb-16">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold bg-gradient-to-r from-brand-900 via-brand-700 to-brand-900 bg-clip-text text-transparent">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-brand-900 sm:bg-gradient-to-r sm:from-brand-900 sm:via-brand-700 sm:to-brand-900 sm:bg-clip-text sm:text-transparent">
               Profil et valeurs
             </h2>
           </div>
