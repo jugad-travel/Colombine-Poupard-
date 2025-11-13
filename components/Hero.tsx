@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Calendar } from "lucide-react";
 import { PRACTICE_INFO } from "@/lib/constants";
 import { useRef, useState } from "react";
@@ -37,6 +38,9 @@ export function Hero({
   
   // Vidéo hero - priorité à hero-video.mp4
   const [videoSrc] = useState<string | null>("/images/hero/hero-video.mp4");
+  
+  // Image mobile
+  const mobileImageSrc = "/images/capture-mobile-hero.png";
 
   return (
     <section className="relative w-full h-[85vh] min-h-[500px] md:min-h-[700px] max-h-[1000px] overflow-hidden flex flex-col md:flex-row" style={{ margin: 0, padding: 0 }}>
@@ -46,56 +50,74 @@ export function Hero({
         <div className="absolute inset-0 bg-gradient-to-r from-black/5 via-transparent to-transparent" />
       </div>
 
-      {/* Partie droite - Vidéo avec fond au premier plan */}
+      {/* Partie droite - Image sur mobile, Vidéo sur desktop */}
       <div className="absolute right-0 top-0 bottom-0 w-full md:w-1/2 overflow-hidden z-10" style={{ backgroundColor: '#a4897b' }}>
-        {videoSrc ? (
-          <div className="relative w-full h-full flex items-center justify-center">
-            <video
-              ref={videoRef}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              webkit-playsinline="true"
-              x5-playsinline="true"
-              poster="/images/hero/hero-image.webp"
-              className="w-full h-full object-contain"
-              style={{
-                objectPosition: "center center",
-                zIndex: 10,
-              }}
-              onLoadedData={(e) => {
-                // Forcer la lecture sur mobile
-                const video = e.target as HTMLVideoElement;
-                video.play().catch(() => {
-                  // Si autoplay échoue, on peut essayer de jouer après interaction
-                });
-              }}
-              onPlay={() => {
-                // Masquer le poster une fois que la vidéo démarre
-                if (videoRef.current) {
-                  videoRef.current.style.opacity = "1";
-                }
-              }}
-            >
-              <source src={videoSrc} type={`video/${videoSrc.split('.').pop()}`} />
-            </video>
-          </div>
-        ) : (
-          // Fallback si pas de vidéo
-          <div className="w-full h-full bg-gradient-to-br from-brand-500 via-brand-300 to-brand-100" />
-        )}
-        {/* Overlay léger sur la vidéo */}
-        <div className="absolute inset-0 bg-gradient-to-l from-black/30 to-transparent z-20 pointer-events-none" />
-        {/* Masquer le logo Grok en bas - dégradé subtil */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#a4897b] via-[#a4897b]/95 to-transparent z-30 pointer-events-none" />
+        {/* Image sur mobile uniquement */}
+        <div className="md:hidden relative w-full h-full">
+          <Image
+            src={mobileImageSrc}
+            alt="Colombine Poupard, Ostéopathe D.O"
+            fill
+            className="object-cover"
+            style={{ objectPosition: "center center" }}
+            priority
+            sizes="100vw"
+          />
+          {/* Overlay léger sur l'image mobile */}
+          <div className="absolute inset-0 bg-gradient-to-l from-black/30 to-transparent z-20 pointer-events-none" />
+        </div>
+
+        {/* Vidéo sur desktop uniquement */}
+        <div className="hidden md:block relative w-full h-full">
+          {videoSrc ? (
+            <div className="relative w-full h-full flex items-center justify-center">
+              <video
+                ref={videoRef}
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="auto"
+                webkit-playsinline="true"
+                x5-playsinline="true"
+                poster="/images/hero/hero-image.webp"
+                className="w-full h-full object-contain"
+                style={{
+                  objectPosition: "center center",
+                  zIndex: 10,
+                }}
+                onLoadedData={(e) => {
+                  // Forcer la lecture sur mobile
+                  const video = e.target as HTMLVideoElement;
+                  video.play().catch(() => {
+                    // Si autoplay échoue, on peut essayer de jouer après interaction
+                  });
+                }}
+                onPlay={() => {
+                  // Masquer le poster une fois que la vidéo démarre
+                  if (videoRef.current) {
+                    videoRef.current.style.opacity = "1";
+                  }
+                }}
+              >
+                <source src={videoSrc} type={`video/${videoSrc.split('.').pop()}`} />
+              </video>
+            </div>
+          ) : (
+            // Fallback si pas de vidéo
+            <div className="w-full h-full bg-gradient-to-br from-brand-500 via-brand-300 to-brand-100" />
+          )}
+          {/* Overlay léger sur la vidéo */}
+          <div className="absolute inset-0 bg-gradient-to-l from-black/30 to-transparent z-20 pointer-events-none" />
+          {/* Masquer le logo Grok en bas - dégradé subtil */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#a4897b] via-[#a4897b]/95 to-transparent z-30 pointer-events-none" />
+        </div>
       </div>
 
-      {/* Contenu avec animations - Positionné à gauche */}
-      <div className="relative z-30 w-full flex items-center px-4 sm:px-6 lg:px-8 py-8 md:py-0">
+      {/* Contenu avec animations - Centré verticalement sur mobile, à gauche sur desktop */}
+      <div className="absolute inset-0 z-30 w-full flex items-center justify-center md:justify-start px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto w-full">
-          <div className="max-w-2xl">
+          <div className="max-w-2xl text-center md:text-left">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}

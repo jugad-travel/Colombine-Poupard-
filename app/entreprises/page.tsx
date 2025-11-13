@@ -1,5 +1,6 @@
 import { Section } from "@/components/Section";
 import { Card } from "@/components/Card";
+import { LogoCarousel } from "@/components/LogoCarousel";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { generateLocalBusinessSchema } from "@/lib/schema";
 import { PRACTICE_INFO, ENTERPRISE_CLIENTS } from "@/lib/constants";
@@ -21,18 +22,22 @@ export default function EntreprisesPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
-      <Section
-        title="Ostéopathie en entreprise"
-        bg="white"
-        className="pt-16 lg:pt-24"
-      >
-        <div className="max-w-4xl space-y-12">
-          {/* Pourquoi */}
-          <div>
-            <h2 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
-              Pourquoi l'ostéopathie en entreprise ?
+      <section className="bg-white pt-16 lg:pt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold bg-gradient-to-r from-brand-900 via-brand-700 to-brand-900 bg-clip-text text-transparent">
+              Ostéopathie en entreprise
             </h2>
-            <div className="space-y-4 text-muted leading-relaxed">
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl space-y-12">
+            {/* Pourquoi */}
+            <div>
+              <h2 className="text-2xl font-serif font-semibold text-brand-900 mb-4">
+                Pourquoi l'ostéopathie en entreprise ?
+              </h2>
+              <div className="space-y-4 text-muted leading-relaxed">
               <p>
                 Les troubles musculo-squelettiques (TMS) représentent la première
                 cause de maladie professionnelle en France.
@@ -50,11 +55,11 @@ export default function EntreprisesPage() {
                 collaborateurs en bonne santé, moins de tensions et plus d'énergie, c'est aussi
                 moins d'arrêts, plus de motivation et un engagement durable au sein de l'entreprise.
               </p>
+              </div>
             </div>
-          </div>
 
-          {/* Modalités */}
-          <div>
+            {/* Modalités */}
+            <div>
             <h2 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
               Modalités
             </h2>
@@ -108,18 +113,7 @@ export default function EntreprisesPage() {
             <h2 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
               Ils m'ont fait confiance
             </h2>
-            <div className="bg-brand-100 rounded-2xl p-6 lg:p-8">
-              <div className="flex flex-wrap gap-3">
-                {ENTERPRISE_CLIENTS.map((client) => (
-                  <span
-                    key={client}
-                    className="bg-white px-4 py-2 rounded-full text-sm font-medium text-brand-900 border border-brand-300"
-                  >
-                    {client}
-                  </span>
-                ))}
-              </div>
-            </div>
+            <LogoCarousel />
           </div>
 
           {/* CTA */}
@@ -148,7 +142,8 @@ export default function EntreprisesPage() {
             </div>
           </div>
         </div>
-      </Section>
+        </div>
+      </section>
     </>
   );
 }

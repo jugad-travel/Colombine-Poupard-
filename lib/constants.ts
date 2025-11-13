@@ -89,10 +89,26 @@ export const PUBLICATION = {
 };
 
 export const ENTERPRISE_CLIENTS = [
-  "BCG",
-  "American Express",
-  "AXA",
+  "AMERICAN EXPRESS",
+  "Daiichi-Sankyo",
+  "Experis",
+  "Manpower",
+  "CaixaBank",
+  "KEARNEY",
+  "NOVARTIS",
   "SeLoger",
+  "dalkia",
+  "VITOGAZ",
+  "BNP PARIBAS",
+  "BCG",
+  "RUBIS ENERGIE",
+  "DATA altares",
+  "Shell",
+  "HAS",
+  "Talent Solutions",
+  "VEOLIA",
+  "CMI FRANCE",
+  "AXA",
 ];
 
 export const MOTIFS_CONSULTATION = [

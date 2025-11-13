@@ -5,11 +5,13 @@ import { Section } from "@/components/Section";
 import { Card } from "@/components/Card";
 import { Badge } from "@/components/Badge";
 import { ContactBlock } from "@/components/ContactBlock";
+import { LogoCarousel } from "@/components/LogoCarousel";
+import { Testimonial } from "@/components/Testimonial";
 import { MOTIFS_CONSULTATION, PRACTICE_INFO, ENTERPRISE_CLIENTS } from "@/lib/constants";
-import { generateLocalBusinessSchema } from "@/lib/schema";
+import { generateLocalBusinessSchema, generatePersonSchema } from "@/lib/schema";
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, ArrowRight, Building2 } from "lucide-react";
+import { Calendar, ArrowRight, Building2, Star } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import {
@@ -31,16 +33,28 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
 };
 
 export default function HomePage() {
-  const schema = generateLocalBusinessSchema();
+  const businessSchema = generateLocalBusinessSchema();
+  const personSchema = generatePersonSchema();
 
   useEffect(() => {
-    // Injecter le schema JSON-LD côté client
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.text = JSON.stringify(schema);
-    document.head.appendChild(script);
+    // Injecter les schémas JSON-LD côté client
+    const businessScript = document.createElement("script");
+    businessScript.type = "application/ld+json";
+    businessScript.text = JSON.stringify(businessSchema);
+    document.head.appendChild(businessScript);
+
+    const personScript = document.createElement("script");
+    personScript.type = "application/ld+json";
+    personScript.text = JSON.stringify(personSchema);
+    document.head.appendChild(personScript);
+
     return () => {
-      document.head.removeChild(script);
+      if (document.head.contains(businessScript)) {
+        document.head.removeChild(businessScript);
+      }
+      if (document.head.contains(personScript)) {
+        document.head.removeChild(personScript);
+      }
     };
   }, []);
 
@@ -55,8 +69,67 @@ export default function HomePage() {
         }}
       />
 
+      {/* Avis Google */}
+      <section className="py-6 sm:py-8" style={{ backgroundColor: '#a4897b' }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-6 sm:mb-8">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white">
+              Ils témoignent
+            </h2>
+          </div>
+          <div className="max-w-6xl mx-auto">
+            {/* En-tête avec note et nombre d'avis */}
+            <div className="text-center mb-6 sm:mb-8">
+              <div className="flex items-center justify-center gap-3 mb-3">
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      size={20}
+                      className="fill-yellow-400 text-yellow-400"
+                    />
+                  ))}
+                </div>
+                <span className="text-xl sm:text-2xl font-serif font-bold text-white">5,0</span>
+              </div>
+              <p className="text-white text-base sm:text-lg">127 avis Google</p>
+            </div>
+            
+            {/* Grille de témoignages */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-6">
+              <Testimonial
+                name="Lucas"
+                month="mai"
+                text="Excellente ostéopathe, à l'écoute et très professionnelle. Elle a su soulager mes douleurs dès la première séance, avec des manipulations douces et efficaces. On se sent tout de suite en confiance. Je la recommande sans hésiter à tous ceux qui cherchent une prise en charge sérieuse et bienveillante. Un grand merci pour votre aide précieuse !"
+              />
+              <Testimonial
+                name="Lionel"
+                month="mai"
+                text="Très heureux de ma séance sur mon lieu de travail : Colombine est à l'écoute et a manipulé avec douceur mes points un peu bloqués. Merci à elle, vivement recommandé."
+              />
+              <Testimonial
+                name="Florence"
+                month="mars"
+                text="Très contente de ma séance. Colombine est passée sur mon lieu de travail le lendemain du belle chute. Elle m'a manipulé avec douceur et efficacité. Mes tensions suite à la chute se sont bien relâchées. N'hésitez pas à venir la consulter."
+              />
+            </div>
+            <div className="text-center">
+              <a
+                href="https://www.google.com/search?client=safari&sa=X&sca_esv=740dc6ac61211c57&rls=en&hl=fr-FR&tbm=lcl&sxsrf=AE3TifNl6dpw8VsckpxB1fbwJA5hmg9BDg:1763029185476&q=Colombine+Poupard+Ostéopathe+D.O+Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxI2NjY0MLc0MjE1NjUzNTEyMzU02sDI-IpRzTk_Jz83KTMvVSEgv7QgsShFwb-45PDK_ILEkoxUBRc9fwXHssziRaxEKgQA2P3W32wAAAA&rldimm=3310792453565426512&ved=2ahUKEwiEx9DC8-6QAxUcpCcCHXFTHskQ9fQKegQIRRAF&biw=1363&bih=721&dpr=2#lkt=LocalPoiReviews"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white hover:bg-brand-100 text-brand-700 border-2 border-brand-300 px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
+              >
+                Voir plus d'avis
+                <ArrowRight size={18} className="sm:w-5 sm:h-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Section Problème */}
-      <Section title="Problème : Une approche adaptée à chaque patient" bg="white">
+      <Section title="Une approche adaptée à chaque patient" bg="white">
         <div className="max-w-4xl space-y-6 text-muted leading-relaxed">
           <p>
             Chaque corps est unique et mérite une attention sur mesure. Que vous cherchiez à
@@ -115,66 +188,96 @@ export default function HomePage() {
       </Section>
 
       {/* Profil et valeurs */}
-      <Section title="Profil et valeurs" bg="brand-100">
-        <div className="max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-          <div className="space-y-4 sm:space-y-6 text-muted leading-relaxed text-sm sm:text-base">
-            <p>
-              Diplômée de l'Institut Supérieur d'Ostéopathie de Lille, j'ai exercé en cabinet et en
-              entreprise à Paris (BCG, American Express, AXA, SeLoger, …).
-            </p>
-            <p>
-              De retour dans le Nord, j'accueille tous types de patients, dans une approche
-              globale et personnalisée.
-            </p>
-            <p>
-              J'ai également suivi une formation spécifique à la prise en charge de la femme
-              enceinte, du post-partum et du nouveau-né, afin d'accompagner ces périodes de
-              transition avec douceur et précision.
-            </p>
-            <p>
-              Mon travail s'appuie sur une approche globale du corps, qui prend en compte à la
-              fois les aspects physiques, émotionnels et le mode de vie de chaque patient.
-            </p>
-            <p>
-              À l'écoute, attentive et bienveillante, j'accorde une importance particulière à la
-              compréhension du vécu et du contexte de chaque douleur.
-            </p>
-            <p>
-              Mon objectif est de vous aider à retrouver confort, mobilité et autonomie grâce à
-              des techniques douces, précises et adaptées à votre situation.
-            </p>
-            <p>
-              Je collabore également avec les entreprises de la métropole lilloise dans le cadre
-              de programmes de prévention et de bien-être au travail, pour réduire les tensions
-              liées à la posture sédentaire et améliorer la qualité de vie au travail.
-            </p>
-          </div>
-          <div className="relative w-full h-[300px] sm:h-[400px] lg:h-[500px] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
-            <Image
-              src="/images/hero/hero-image.webp"
-              alt="Colombine Poupard, Ostéopathe D.O"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+      <section className="bg-brand-100 py-8 sm:py-12 lg:py-16 relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8 sm:mb-12 lg:mb-16">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold bg-gradient-to-r from-brand-900 via-brand-700 to-brand-900 bg-clip-text text-transparent">
+              Profil et valeurs
+            </h2>
           </div>
         </div>
-      </Section>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center relative z-10">
+            <div className="space-y-4 sm:space-y-6 text-muted leading-relaxed text-sm sm:text-base">
+              <p>
+                Diplômée de l'Institut Supérieur d'Ostéopathie de Lille, j'ai exercé en cabinet et en
+                entreprise à Paris (BCG, American Express, AXA, SeLoger, …).
+              </p>
+              <p>
+                De retour dans le Nord, j'accueille tous types de patients, dans une approche
+                globale et personnalisée.
+              </p>
+              <p>
+                J'ai également suivi une formation spécifique à la prise en charge de la femme
+                enceinte, du post-partum et du nouveau-né, afin d'accompagner ces périodes de
+                transition avec douceur et précision.
+              </p>
+              <p>
+                Mon travail s'appuie sur une approche globale du corps, qui prend en compte à la
+                fois les aspects physiques, émotionnels et le mode de vie de chaque patient.
+              </p>
+              <p>
+                À l'écoute, attentive et bienveillante, j'accorde une importance particulière à la
+                compréhension du vécu et du contexte de chaque douleur.
+              </p>
+              <p>
+                Mon objectif est de vous aider à retrouver confort, mobilité et autonomie grâce à
+                des techniques douces, précises et adaptées à votre situation.
+              </p>
+              <p>
+                Je collabore également avec les entreprises de la métropole lilloise dans le cadre
+                de programmes de prévention et de bien-être au travail, pour réduire les tensions
+                liées à la posture sédentaire et améliorer la qualité de vie au travail.
+              </p>
+            </div>
+          </div>
+        </div>
+        {/* Image positionnée absolument pour toucher les bords sup, inf et droit - Desktop */}
+        <div className="hidden lg:block absolute top-0 bottom-0 right-0 w-1/2 group overflow-hidden">
+          <Image
+            src="/images/hero/hero-image.webp"
+            alt="Colombine Poupard, Ostéopathe D.O"
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-105"
+            sizes="50vw"
+            priority
+            style={{ objectPosition: 'center 30%' }}
+          />
+          {/* Dégradé uniquement de droite à gauche pour fondre dans le fond */}
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-brand-100" />
+        </div>
+        {/* Image en arrière-plan sur mobile - opacité réduite */}
+        <div className="lg:hidden absolute top-0 bottom-0 right-0 w-full overflow-hidden opacity-20">
+          <Image
+            src="/images/hero/hero-image.webp"
+            alt="Colombine Poupard, Ostéopathe D.O"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+            style={{ objectPosition: 'center 30%' }}
+          />
+          {/* Dégradé pour fondre dans le fond sur mobile */}
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-brand-100" />
+        </div>
+      </section>
 
       {/* Section Entreprise */}
-      <Section
-        kicker="Entreprises"
-        title="Ostéopathie en entreprise"
-        bg="white"
-      >
-        <div className="max-w-4xl space-y-12">
-          <div>
-            <h3 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
-              Pourquoi l'ostéopathie en entreprise ?
-            </h3>
-            <div className="space-y-4 text-muted leading-relaxed">
+      <section className="bg-white py-8 sm:py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold bg-gradient-to-r from-brand-900 via-brand-700 to-brand-900 bg-clip-text text-transparent">
+              Ostéopathie en entreprise
+            </h2>
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl space-y-12">
+            <div>
+              <h3 className="text-2xl font-serif font-semibold text-brand-900 mb-4">
+                Pourquoi l'ostéopathie en entreprise ?
+              </h3>
+              <div className="space-y-4 text-muted leading-relaxed">
               <p>
                 Les troubles musculo-squelettiques (TMS) représentent la première cause de
                 maladie professionnelle en France.
@@ -238,18 +341,7 @@ export default function HomePage() {
             <h3 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
               Ils m'ont fait confiance
             </h3>
-            <div className="bg-brand-100 rounded-2xl p-6 lg:p-8">
-              <div className="flex flex-wrap gap-3">
-                {ENTERPRISE_CLIENTS.map((client) => (
-                  <span
-                    key={client}
-                    className="bg-white px-4 py-2 rounded-full text-sm font-medium text-brand-900 border border-brand-300"
-                  >
-                    {client}
-                  </span>
-                ))}
-              </div>
-            </div>
+            <LogoCarousel />
           </div>
 
           <div className="bg-brand-100 rounded-2xl p-8 text-center">
@@ -275,8 +367,9 @@ export default function HomePage() {
               </a>
             </div>
           </div>
+          </div>
         </div>
-      </Section>
+      </section>
 
       {/* Accès rapide */}
       <Section title="Accès rapide" bg="brand-100">
