@@ -555,7 +555,9 @@ export default function HomePage() {
             { src: "/images/cabinet-facade.png", alt: "Cabinet d'ostéopathie - Façade", useImage: false, fullWidth: false },
             { name: "facade", alt: "Façade du cabinet d'ostéopathie", useImage: true, fullWidth: false },
           ].map((img, index) => {
-            const imgSrc = img.useImage ? `/images/cabinet/${img.name}.webp` : img.src;
+            const imgSrc: string = img.useImage 
+              ? `/images/cabinet/${(img as { name: string }).name}.webp` 
+              : (img as { src: string }).src;
             return (
               <div
                 key={index}
