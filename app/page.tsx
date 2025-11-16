@@ -550,10 +550,10 @@ export default function HomePage() {
       <Section title="Le cabinet" bg="white">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {[
-            { name: "cabinet-1", alt: "Cabinet d'ostéopathie - Intérieur", useImage: true },
-            { src: "/images/cabinet-interieur.png", alt: "Cabinet d'ostéopathie - Intérieur", useImage: false },
-            { src: "/images/cabinet-facade.png", alt: "Cabinet d'ostéopathie - Façade", useImage: false },
-            { name: "facade", alt: "Façade du cabinet d'ostéopathie", useImage: true },
+            { name: "cabinet-1", alt: "Cabinet d'ostéopathie - Intérieur", useImage: true, fullWidth: false },
+            { src: "/images/cabinet-interieur.png", alt: "Cabinet d'ostéopathie - Intérieur", useImage: false, fullWidth: false },
+            { src: "/images/cabinet-facade.png", alt: "Cabinet d'ostéopathie - Façade", useImage: false, fullWidth: false },
+            { name: "facade", alt: "Façade du cabinet d'ostéopathie", useImage: true, fullWidth: false },
           ].map((img, index) => {
             const imgSrc = img.useImage ? `/images/cabinet/${img.name}.webp` : img.src;
             return (

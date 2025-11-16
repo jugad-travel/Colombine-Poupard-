@@ -114,17 +114,17 @@ export default function CabinetAccesPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Images du cabinet - support .webp et .jpg */}
               {[
-                { name: "cabinet-1", alt: "Cabinet d'ostéopathie - Intérieur", useImage: true },
-                { src: "/images/cabinet-interieur.png", alt: "Cabinet d'ostéopathie - Intérieur", useImage: false },
-                { src: "/images/cabinet-facade.png", alt: "Cabinet d'ostéopathie - Façade", useImage: false },
-                { name: "facade", alt: "Façade du cabinet d'ostéopathie", useImage: true },
+                { name: "cabinet-1", alt: "Cabinet d'ostéopathie - Intérieur", useImage: true, fullWidth: false },
+                { src: "/images/cabinet-interieur.png", alt: "Cabinet d'ostéopathie - Intérieur", useImage: false, fullWidth: false },
+                { src: "/images/cabinet-facade.png", alt: "Cabinet d'ostéopathie - Façade", useImage: false, fullWidth: false },
+                { name: "facade", alt: "Façade du cabinet d'ostéopathie", useImage: true, fullWidth: false },
               ].map((img, index) => {
                 const imgSrc = img.useImage ? `/images/cabinet/${img.name}.webp` : img.src;
                 return (
                   <div
                     key={index}
                     className={`relative w-full h-[400px] bg-brand-100 rounded-2xl overflow-hidden group ${
-                      img.fullWidth ? "md:col-span-2" : ""
+                      (img as any).fullWidth ? "md:col-span-2" : ""
                     }`}
                   >
                     {img.useImage ? (
@@ -133,7 +133,7 @@ export default function CabinetAccesPage() {
                         alt={img.alt}
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        sizes={img.fullWidth ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
+                        sizes={(img as any).fullWidth ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
                         priority={index < 2}
                       />
                     ) : (
