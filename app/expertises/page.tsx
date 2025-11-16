@@ -23,35 +23,35 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; className?: s
 };
 
 const detailedExpertises = {
-  cranienne: {
-    title: "Ostéopathie crânienne",
-    description:
-      "L'ostéopathie crânienne utilise des techniques douces et précises pour travailler sur les structures du crâne et du système neuro-méninégé. Cette approche permet de relâcher les tensions crâniennes, de favoriser la circulation du liquide céphalo-rachidien et d'améliorer la fonction neurologique. Elle est particulièrement indiquée pour les maux de tête, migraines, troubles du sommeil, stress, acouphènes et certaines pathologies ORL.",
-  },
-  "femme-enceinte": {
-    title: "Ostéopathie de la femme enceinte",
-    description:
-      "Pendant la grossesse, le corps de la femme subit de nombreux changements posturaux et hormonaux. L'ostéopathie accompagne ces transformations en soulageant les lombalgies, sciatalgies, douleurs cervicales et troubles circulatoires. Elle prépare également le bassin à l'accouchement et peut aider en cas de présentation du bébé en siège. Après l'accouchement, elle favorise la récupération et le rééquilibrage du corps.",
-  },
-  sport: {
-    title: "Ostéopathie du sport",
-    description:
-      "L'ostéopathie du sport vise à optimiser les performances, prévenir les blessures et favoriser la récupération. Elle travaille sur l'amélioration de la mobilité articulaire, la correction des déséquilibres posturaux et l'optimisation de la gestuelle sportive. Elle est indiquée pour les entorses, tendinites, contractures, douleurs articulaires et pour accompagner le retour au sport après une blessure.",
-  },
-  myofasciale: {
-    title: "Ostéopathie myofasciale",
-    description:
-      "Les fascias sont des membranes qui enveloppent et relient toutes les structures du corps. L'ostéopathie myofasciale travaille spécifiquement sur ces tissus pour restaurer leur élasticité et leur mobilité. Cette approche permet de diminuer les douleurs chroniques, d'améliorer la souplesse globale et de libérer les adhérences tissulaires. Elle est particulièrement efficace pour les douleurs diffuses, les raideurs et les restrictions de mobilité.",
-  },
-  pediatrique: {
-    title: "Ostéopathie pédiatrique",
-    description:
-      "L'ostéopathie pédiatrique utilise des techniques très douces et adaptées aux nourrissons et enfants. Elle peut accompagner les troubles du sommeil, les coliques, les régurgitations, les torticolis, les plagiocéphalies (tête plate) et les troubles de la succion. Chez l'enfant plus grand, elle suit la croissance, corrige les troubles posturaux et accompagne les difficultés d'apprentissage ou de concentration.",
-  },
   structurelle: {
     title: "Ostéopathie structurelle",
     description:
       "L'ostéopathie structurelle utilise des techniques articulaires et tissulaires pour libérer les restrictions de mobilité. Elle travaille sur les articulations, les muscles, les ligaments et les tendons pour rétablir l'équilibre du système musculo-squelettique. Cette approche est indiquée pour les douleurs vertébrales, les blocages articulaires, les troubles posturaux et les limitations de mouvement.",
+  },
+  sport: {
+    title: "Ostéopathie du sport",
+    description:
+      "L'ostéopathie du sport vise à optimiser les performances, prévenir les blessures et favoriser la récupération. Elle travaille sur l'amélioration de la mobilité articulaire, la correction des déséquilibres. Elle est indiquée pour les entorses, tendinites, contractures, douleurs articulaires, ainsi que dans l'accompagnement du retour à l'activité en complément d'un suivi médical.",
+  },
+  myofasciale: {
+    title: "Ostéopathie myofasciale",
+    description:
+      "L'approche myofasciale s'intéresse aux fascias, des tissus conjonctifs répartis dans tout le corps. Les techniques utilisées cherchent à modifier les tensions et à améliorer la mobilité de ces tissus.",
+  },
+  cranienne: {
+    title: "Ostéopathie crânienne",
+    description:
+      "L'ostéopathie crânienne utilise un toucher léger appliqué au niveau du crâne. Elle vise essentiellement à réduire les tensions présentes dans ces zones, notamment au niveau tissulaire et musculaire. Cette démarche peut être intégrée dans la prise en charge de certaines céphalées, tensions cervicales ou troubles ORL, selon les indications médicales appropriées.",
+  },
+  "femme-enceinte": {
+    title: "Ostéopathie de la femme enceinte",
+    description:
+      "Pendant la grossesse, les transformations posturales et les modifications biomécaniques peuvent entraîner des douleurs ou gênes d'origine musculo-squelettique. L'ostéopathie peut accompagner cette période en aidant à réduire certaines tensions, notamment lombaires, pelviennes ou cervicales. Après l'accouchement, elle peut contribuer au rééquilibrage du corps en travaillant sur les adaptations mécaniques liées au post-partum.",
+  },
+  pediatrique: {
+    title: "Ostéopathie pédiatrique",
+    description:
+      "Chez les nourrissons et enfants, l'ostéopathie utilise des techniques douces et adaptées à leur développement. Elle peut accompagner certaines situations comme les torticolis positionnels, certaines plagiocéphalies (toujours avec suivi pédiatrique), ou des tensions mécaniques liées à la posture ou à la croissance. Chez l'enfant plus grand, elle peut aider à gérer des douleurs musculo-squelettiques ou des inconforts liés à l'activité quotidienne ou sportive.",
   },
 };
 
@@ -72,7 +72,7 @@ export default function ExpertisesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
       <Section
-        title="Expertises et actes"
+        title="EXPERTISES ET ACTES"
         bg="white"
         className="pt-16 lg:pt-24"
       >

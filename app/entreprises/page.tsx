@@ -1,10 +1,10 @@
 import { Section } from "@/components/Section";
 import { Card } from "@/components/Card";
-import { LogoCarousel } from "@/components/LogoCarousel";
 import { generateMetadata as genMeta } from "@/lib/seo";
 import { generateLocalBusinessSchema } from "@/lib/schema";
-import { PRACTICE_INFO, ENTERPRISE_CLIENTS } from "@/lib/constants";
+import { PRACTICE_INFO } from "@/lib/constants";
 import { Building2, Mail } from "lucide-react";
+import Image from "next/image";
 
 export const metadata = genMeta({
   title: "Interventions en entreprise",
@@ -68,19 +68,31 @@ export default function EntreprisesPage() {
                 <li className="flex items-start gap-3">
                   <span className="text-brand-700 mt-1">•</span>
                   <span>
-                    40 minutes adaptées aux besoins spécifiques de chaque collaborateur.
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-brand-700 mt-1">•</span>
-                  <span>
                     Salle dédiée mise à disposition par l'entreprise.
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-brand-700 mt-1">•</span>
                   <span>
-                    Planning partagé pour faciliter l'organisation des rendez-vous.
+                    Prise de RDV via une application simple et rapide.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-brand-700 mt-1">•</span>
+                  <span>
+                    Consultations de 40 minutes.
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-brand-700 mt-1">•</span>
+                  <span>
+                    Fréquence des interventions sur mesure (selon les besoins).
+                  </span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <span className="text-brand-700 mt-1">•</span>
+                  <span>
+                    Tarifs préférentiels pour l'entreprise.
                   </span>
                 </li>
               </ul>
@@ -92,18 +104,21 @@ export default function EntreprisesPage() {
             <h2 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
               Bénéfices pour l'entreprise
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card title="Réduction des douleurs">
-                Diminution des troubles musculo-squelettiques et amélioration du
-                confort au travail.
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Card title="Moins de douleurs, plus de confort">
+                Réduction des TMS et amélioration du bien-être au travail.
               </Card>
-              <Card title="Engagement renforcé">
-                Amélioration de la qualité de vie au travail et renforcement de
-                l'engagement des collaborateurs.
+              <Card title="Moins d'absentéisme">
+                Moins de douleurs = moins d'arrêts maladie.
               </Card>
-              <Card title="Performance globale">
-                Contribution à la performance individuelle et collective de
-                l'entreprise.
+              <Card title="Productivité et performance renforcées">
+                Collaborateurs plus à l'aise, plus efficaces et plus motivés.
+              </Card>
+              <Card title="Engagement durable">
+                Meilleure qualité de vie au travail, équipes plus impliquées et plus sereines.
+              </Card>
+              <Card title="Fidélisation des talents">
+                Baisse du turnover et meilleure rétention des collaborateurs.
               </Card>
             </div>
           </div>
@@ -113,11 +128,21 @@ export default function EntreprisesPage() {
             <h2 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
               Ils m'ont fait confiance
             </h2>
-            <LogoCarousel />
+            <div className="relative w-full max-w-5xl mx-auto">
+              <Image
+                src="/images/entreprises-logos.png"
+                alt="Logos des entreprises clientes : American Express, BCG, AXA, SeLoger, Novartis, BNP Paribas, Veolia, Shell, et autres"
+                width={1200}
+                height={800}
+                className="w-full h-auto rounded-2xl shadow-sm"
+                priority={false}
+                loading="lazy"
+              />
+            </div>
           </div>
 
           {/* CTA */}
-          <div className="bg-brand-100 rounded-2xl p-8 text-center">
+          <div className="bg-brand-100 rounded-2xl p-8 text-center mb-12 lg:mb-16">
             <h3 className="text-2xl font-serif font-semibold text-brand-900 mb-4">
               Demander un devis
             </h3>

@@ -19,6 +19,10 @@ interface HeroProps {
     label: string;
     href: string;
   };
+  tertiaryCTA?: {
+    label: string;
+    href: string;
+  };
 }
 
 export function Hero({
@@ -26,6 +30,7 @@ export function Hero({
   subtitle,
   primaryCTA,
   secondaryCTA,
+  tertiaryCTA,
 }: HeroProps) {
   const defaultPrimaryCTA = {
     label: "Prendre RDV",
@@ -143,7 +148,7 @@ export function Hero({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4"
+                className="flex flex-col sm:flex-row gap-2 sm:gap-3 flex-wrap"
               >
                 {/* Masquer le bouton "Prendre RDV" sur mobile (CTASticky en bas) */}
                 {cta.external ? (
@@ -153,9 +158,9 @@ export function Hero({
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="hidden sm:inline-flex items-center justify-center gap-2 bg-brand-700 hover:bg-brand-900 text-white px-8 py-4 rounded-3xl font-medium shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
+                    className="hidden sm:inline-flex items-center justify-center gap-2 bg-brand-700 hover:bg-brand-900 text-white px-5 sm:px-6 py-3 sm:py-3.5 rounded-3xl font-medium text-sm sm:text-base shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2 whitespace-nowrap"
                   >
-                    <Calendar size={20} />
+                    <Calendar size={18} className="sm:w-5 sm:h-5" />
                     {cta.label}
                   </motion.a>
                 ) : (
@@ -166,9 +171,9 @@ export function Hero({
                   >
                     <Link
                       href={cta.href}
-                      className="inline-flex items-center justify-center gap-2 bg-brand-700 hover:bg-brand-900 text-white px-8 py-4 rounded-3xl font-medium shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
+                      className="inline-flex items-center justify-center gap-2 bg-brand-700 hover:bg-brand-900 text-white px-5 sm:px-6 py-3 sm:py-3.5 rounded-3xl font-medium text-sm sm:text-base shadow-xl transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2 whitespace-nowrap"
                     >
-                      <Calendar size={20} />
+                      <Calendar size={18} className="sm:w-5 sm:h-5" />
                       {cta.label}
                     </Link>
                   </motion.div>
@@ -180,9 +185,23 @@ export function Hero({
                   >
                     <Link
                       href={secondaryCTA.href}
-                      className="inline-flex items-center justify-center gap-2 bg-white/95 hover:bg-white text-brand-700 border-2 border-white/50 px-6 sm:px-8 py-3 sm:py-4 rounded-3xl font-medium transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 text-sm sm:text-base"
+                      className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-white/95 hover:bg-white text-brand-700 border-2 border-white/50 px-4 sm:px-5 py-3 sm:py-3.5 rounded-3xl font-medium text-sm sm:text-base transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 whitespace-nowrap"
                     >
                       {secondaryCTA.label}
+                      <ArrowRight size={18} className="sm:w-5 sm:h-5" />
+                    </Link>
+                  </motion.div>
+                )}
+                {tertiaryCTA && (
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Link
+                      href={tertiaryCTA.href}
+                      className="inline-flex items-center justify-center gap-1.5 sm:gap-2 bg-white/95 hover:bg-white text-brand-700 border-2 border-white/50 px-4 sm:px-5 py-3 sm:py-3.5 rounded-3xl font-medium text-sm sm:text-base transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 whitespace-nowrap"
+                    >
+                      {tertiaryCTA.label}
                       <ArrowRight size={18} className="sm:w-5 sm:h-5" />
                     </Link>
                   </motion.div>

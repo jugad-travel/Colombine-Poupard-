@@ -6,7 +6,7 @@ export function Footer() {
   return (
     <footer className="bg-brand-100 text-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
           {/* Coordonnées */}
           <div>
             <h3 className="text-lg font-serif font-semibold text-brand-900 mb-4">

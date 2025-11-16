@@ -21,16 +21,10 @@ export const PRACTICE_INFO = {
 
 export const EXPERTISES = [
   {
-    id: "cranienne",
-    title: "Ostéopathie crânienne",
-    description: "Approches douces pour relâcher les tensions du crâne et du système neuro-méninégé.",
-    icon: "Brain",
-  },
-  {
-    id: "femme-enceinte",
-    title: "Ostéopathie de la femme enceinte",
-    description: "Soulager les lombalgies, sciatalgies, troubles circulatoires et préparer le corps à l'accouchement.",
-    icon: "Heart",
+    id: "structurelle",
+    title: "Ostéopathie structurelle",
+    description: "Techniques articulaires et tissulaires pour libérer les restrictions de mobilité.",
+    icon: "Bone",
   },
   {
     id: "sport",
@@ -45,16 +39,22 @@ export const EXPERTISES = [
     icon: "Zap",
   },
   {
+    id: "cranienne",
+    title: "Ostéopathie crânienne",
+    description: "Approches douces pour relâcher les tensions du crâne et du système neuro-méninégé.",
+    icon: "Brain",
+  },
+  {
+    id: "femme-enceinte",
+    title: "Ostéopathie de la femme enceinte",
+    description: "Soulager les lombalgies, sciatalgies, troubles circulatoires et préparer le corps à l'accouchement.",
+    icon: "Heart",
+  },
+  {
     id: "pediatrique",
     title: "Ostéopathie pédiatrique",
     description: "Suivi du nourrisson et de l'enfant : sommeil, digestion, torticolis, posture.",
     icon: "Baby",
-  },
-  {
-    id: "structurelle",
-    title: "Ostéopathie structurelle",
-    description: "Techniques articulaires et tissulaires pour libérer les restrictions de mobilité.",
-    icon: "Bone",
   },
 ];
 

@@ -42,17 +42,26 @@ export default function TarifsHorairesPage() {
             <h2 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
               Tarifs
             </h2>
-            <Card icon={<Euro size={32} className="text-brand-700" />}>
-              <div className="flex items-center gap-4 mb-4">
-                <span className="text-4xl font-serif font-bold text-brand-900">
-                  {PRACTICE_INFO.price}
-                </span>
-                <span className="text-muted">la séance</span>
+            <Card>
+              <div className="space-y-8">
+                {/* Bloc Prix */}
+                <div>
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span className="text-6xl font-serif font-bold text-brand-900 leading-none">
+                      60
+                    </span>
+                    <span className="text-2xl font-serif font-semibold text-brand-700 leading-none">
+                      €
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted font-medium">la séance</p>
+                </div>
+                
+                {/* Texte explicatif */}
+                <p className="text-muted leading-relaxed">
+                  Une facture vous est délivrée après la séance pour un éventuel remboursement par votre mutuelle.
+                </p>
               </div>
-              <p className="text-muted leading-relaxed">
-                De nombreuses mutuelles remboursent partiellement l'ostéopathie
-                — une facture peut vous être délivrée sur demande.
-              </p>
             </Card>
           </div>
 

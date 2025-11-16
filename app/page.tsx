@@ -11,7 +11,7 @@ import { MOTIFS_CONSULTATION, PRACTICE_INFO, ENTERPRISE_CLIENTS } from "@/lib/co
 import { generateLocalBusinessSchema, generatePersonSchema } from "@/lib/schema";
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, ArrowRight, Building2, Star } from "lucide-react";
+import { Calendar, ArrowRight, Building2, Star, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
 import {
@@ -66,6 +66,10 @@ export default function HomePage() {
         secondaryCTA={{
           label: "Découvrir le cabinet",
           href: "/cabinet-acces",
+        }}
+        tertiaryCTA={{
+          label: "Offre entreprise",
+          href: "/entreprises",
         }}
       />
 
@@ -140,30 +144,218 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* Motifs de consultation & domaines d'expertise */}
-      <Section title="Motifs de consultation & domaines d'expertise" bg="brand-100">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {MOTIFS_CONSULTATION.map((motif, index) => {
-            const IconComponent = iconMap[motif.icon] || Brain;
-            return (
-              <motion.div
-                key={motif.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="h-full"
-              >
-                <Card
-                  title={motif.title}
-                  icon={<IconComponent size={28} className="sm:w-8 sm:h-8 text-brand-700" />}
-                >
-                  {motif.description}
-                </Card>
-              </motion.div>
-            );
-          })}
+      {/* Motifs de consultation */}
+      <Section title="Motifs de consultation" bg="brand-100">
+        <div className="max-w-6xl mx-auto space-y-8 sm:space-y-10">
+          {/* Douleurs ostéo-articulaires */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm"
+          >
+            <h3 className="text-xl sm:text-2xl font-serif font-semibold text-brand-900 mb-4">
+              Douleurs ostéo-articulaires
+            </h3>
+            <ul className="space-y-2 text-muted">
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Maux de dos : lombalgies, dorsalgies, cervicalgies</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Sciatiques et cruralgies</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Douleurs articulaires : genoux, hanches, épaules, poignets…</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Tendinites, entorses, gêne post-traumatique</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Raideurs, perte de mobilité, sensations de blocage</span>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* Troubles digestifs */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm"
+          >
+            <h3 className="text-xl sm:text-2xl font-serif font-semibold text-brand-900 mb-4">
+              Troubles digestifs
+            </h3>
+            <ul className="space-y-2 text-muted">
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Reflux gastriques, brûlures d'estomac</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Ballonnements, digestion lente</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Constipation, diarrhée</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Douleurs abdominales fonctionnelles, inconfort après les repas</span>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* Sphère crânienne */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm"
+          >
+            <h3 className="text-xl sm:text-2xl font-serif font-semibold text-brand-900 mb-4">
+              Sphère crânienne
+            </h3>
+            <ul className="space-y-2 text-muted">
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Céphalées, migraines</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Acouphènes, bruxisme</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Tensions de la mâchoire (ATM)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Troubles du sommeil, fatigue persistante</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Sinusites chroniques, otites à répétition (en complément d'un suivi médical)</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Sensation de tête « lourde » ou tensions oculaires</span>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* Sphère gynécologique */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm"
+          >
+            <h3 className="text-xl sm:text-2xl font-serif font-semibold text-brand-900 mb-4">
+              Sphère gynécologique
+            </h3>
+            <ul className="space-y-2 text-muted">
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Règles douloureuses, cycles irréguliers</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Douleurs pelviennes fonctionnelles</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Inconforts liés à la fertilité ou au cycle</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Suivi de grossesse et post-partum</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Tensions du bas-ventre, inconforts lombaires associés</span>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* Ostéopathie de la femme enceinte */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm"
+          >
+            <h3 className="text-xl sm:text-2xl font-serif font-semibold text-brand-900 mb-4">
+              Ostéopathie de la femme enceinte
+            </h3>
+            <ul className="space-y-2 text-muted">
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Douleurs lombaires, pelviennes ou ligamentaires</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Sensation de tiraillement, lourdeur</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Troubles digestifs, reflux</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Essoufflement, fatigue</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Inconforts posturaux liés à l'évolution de la grossesse</span>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* Ostéopathie pédiatrique */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="bg-white rounded-2xl p-6 sm:p-8 shadow-sm"
+          >
+            <h3 className="text-xl sm:text-2xl font-serif font-semibold text-brand-900 mb-4">
+              Ostéopathie pédiatrique
+            </h3>
+            <ul className="space-y-2 text-muted">
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Accouchement instrumentalisé : forceps, ventouse, césarienne</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Asymétries du crâne (plagiocéphalie), torticolis</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Reflux, coliques, constipation</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Troubles du sommeil, agitation ou inconfort</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-brand-700 mt-1">•</span>
+                <span>Difficultés d'allaitement liées aux tensions buccales ou cervicales</span>
+              </li>
+            </ul>
+          </motion.div>
         </div>
       </Section>
 
@@ -171,18 +363,15 @@ export default function HomePage() {
       <Section title="Retrouvez mouvement, équilibre et sérénité" bg="white">
         <div className="max-w-4xl space-y-6 text-muted leading-relaxed">
           <p>
-            Les douleurs traduisent souvent un déséquilibre du corps. Elles apparaissent lorsque
-            certaines structures perdent leur mobilité ou leur capacité d'adaptation. Elles
-            peuvent limiter vos mouvements, perturber votre sommeil et épuiser votre énergie.
+            Les douleurs reflètent souvent un déséquilibre du corps, lié à une perte de mobilité
+            ou d'adaptation de certaines structures. Elles peuvent limiter vos mouvements,
+            perturber votre sommeil et diminuer votre énergie.
           </p>
           <p>
-            L'ostéopathie propose une approche globale et douce pour aider le corps à se libérer
-            de ses tensions et retrouver son équilibre naturel. Par des manipulations précises et
-            adaptées, elle restaure l'harmonie et relâche les zones de tension.
-          </p>
-          <p>
-            Au-delà du soulagement, elle aide à entretenir la mobilité du corps et à prévenir
-            l'apparition de nouvelles gênes.
+            L'ostéopathie offre une approche globale et douce pour relâcher les tensions et aider
+            le corps à retrouver son équilibre naturel. Grâce à des manipulations précises, elle
+            améliore la mobilité, apaise les inconforts et contribue à prévenir l'apparition de
+            nouvelles gênes.
           </p>
         </div>
       </Section>
@@ -192,7 +381,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8 sm:mb-12 lg:mb-16">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-brand-900 sm:bg-gradient-to-r sm:from-brand-900 sm:via-brand-700 sm:to-brand-900 sm:bg-clip-text sm:text-transparent">
-              Profil et valeurs
+              <strong>Profil et valeurs</strong>
             </h2>
           </div>
         </div>
@@ -201,19 +390,19 @@ export default function HomePage() {
             <div className="space-y-4 sm:space-y-6 text-muted leading-relaxed text-sm sm:text-base">
               <p>
                 Diplômée de l'Institut Supérieur d'Ostéopathie de Lille, j'ai exercé en cabinet et en
-                entreprise à Paris (BCG, American Express, AXA, SeLoger, …).
+                entreprise à Paris.
               </p>
               <p>
-                De retour dans le Nord, j'accueille tous types de patients, dans une approche
+                De retour dans le Nord, j'accueille <strong>tous types de patients,</strong> dans une approche
                 globale et personnalisée.
               </p>
               <p>
-                J'ai également suivi une formation spécifique à la prise en charge de la femme
-                enceinte, du post-partum et du nouveau-né, afin d'accompagner ces périodes de
+                J'ai également suivi une <strong>formation spécifique à la prise en charge de la femme
+                enceinte, du post-partum et du nouveau-né,</strong> afin d'accompagner ces périodes de
                 transition avec douceur et précision.
               </p>
               <p>
-                Mon travail s'appuie sur une approche globale du corps, qui prend en compte à la
+                Mon travail s'appuie sur une <strong>approche globale du corps,</strong> qui prend en compte à la
                 fois les aspects physiques, émotionnels et le mode de vie de chaque patient.
               </p>
               <p>
@@ -221,11 +410,11 @@ export default function HomePage() {
                 compréhension du vécu et du contexte de chaque douleur.
               </p>
               <p>
-                Mon objectif est de vous aider à retrouver confort, mobilité et autonomie grâce à
-                des techniques douces, précises et adaptées à votre situation.
+                Mon objectif est de vous aider à retrouver <strong>confort, mobilité et autonomie</strong> grâce à
+                des techniques précises et adaptées à votre situation.
               </p>
               <p>
-                Je collabore également avec les entreprises de la métropole lilloise dans le cadre
+                Je collabore également avec les <strong>entreprises de la métropole lilloise</strong> dans le cadre
                 de programmes de prévention et de bien-être au travail, pour réduire les tensions
                 liées à la posture sédentaire et améliorer la qualité de vie au travail.
               </p>
@@ -262,127 +451,63 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Section Entreprise */}
-      <section className="bg-white py-8 sm:py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-4">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold bg-gradient-to-r from-brand-900 via-brand-700 to-brand-900 bg-clip-text text-transparent">
-              Ostéopathie en entreprise
-            </h2>
-          </div>
-        </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl space-y-12">
-            <div>
-              <h3 className="text-2xl font-serif font-semibold text-brand-900 mb-4">
-                Pourquoi l'ostéopathie en entreprise ?
-              </h3>
-              <div className="space-y-4 text-muted leading-relaxed">
+      {/* Section Entreprise - Version courte avec liseré cliquable */}
+      <Section title="Ostéopathie en entreprise" bg="brand-100">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative"
+        >
+          <Link
+            href="/entreprises"
+            className="group block pl-6 sm:pl-8 border-l-4 border-brand-700 hover:border-brand-900 transition-colors"
+          >
+            <h3 className="text-xl sm:text-2xl font-serif font-semibold text-brand-900 mb-6">
+              Pourquoi intégrer l'ostéopathie au sein de votre entreprise ?
+            </h3>
+            <div className="space-y-4 text-muted leading-relaxed max-w-4xl mb-8">
               <p>
-                Les troubles musculo-squelettiques (TMS) représentent la première cause de
+                Les troubles musculo-squelettiques (TMS) sont aujourd'hui la première cause de
                 maladie professionnelle en France.
               </p>
               <p>
-                Le travail sédentaire, les postures prolongées, le stress et la répétitivité des gestes
-                favorisent l'apparition de douleurs et de tensions.
+                Postures prolongées, travail sédentaire, stress, gestes répétitifs… autant de facteurs
+                qui génèrent douleurs, tensions et baisse d'efficacité.
               </p>
               <p>
-                L'ostéopathie en entreprise permet de prévenir ces troubles, de réduire
-                l'absentéisme et d'améliorer la qualité de vie au travail.
+                L'ostéopathie en entreprise permet de prévenir ces troubles, de réduire l'absentéisme
+                et d'améliorer durablement la qualité de vie au travail.
               </p>
-              <p>
-                La qualité de vie au travail est un véritable levier de performance : des
-                collaborateurs en bonne santé, moins de tensions et plus d'énergie, c'est aussi
-                moins d'arrêts, plus de motivation et un engagement durable au sein de l'entreprise.
+              <p className="font-semibold text-brand-900">
+                Des collaborateurs qui se sentent mieux, c'est moins de douleurs, plus d'énergie,
+                une motivation renforcée et une performance globalement accrue.
               </p>
             </div>
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
-              Modalités
-            </h3>
-            <div className="bg-brand-100 rounded-2xl p-6 lg:p-8">
-              <ul className="space-y-3 text-muted">
-                <li className="flex items-start gap-3">
-                  <span className="text-brand-700 mt-1">•</span>
-                  <span>40 minutes adaptées aux besoins spécifiques de chaque collaborateur.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-brand-700 mt-1">•</span>
-                  <span>Salle dédiée mise à disposition par l'entreprise.</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-brand-700 mt-1">•</span>
-                  <span>Planning partagé pour faciliter l'organisation des rendez-vous.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
-              Bénéfices pour l'entreprise
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card title="Réduction des douleurs">
-                Diminution des troubles musculo-squelettiques et amélioration du confort au travail.
-              </Card>
-              <Card title="Engagement renforcé">
-                Amélioration de la qualité de vie au travail et renforcement de l'engagement des collaborateurs.
-              </Card>
-              <Card title="Performance globale">
-                Contribution à la performance individuelle et collective de l'entreprise.
-              </Card>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-serif font-semibold text-brand-900 mb-6">
-              Ils m'ont fait confiance
-            </h3>
-            <LogoCarousel />
-          </div>
-
-          <div className="bg-brand-100 rounded-2xl p-8 text-center">
-            <h3 className="text-2xl font-serif font-semibold text-brand-900 mb-4">
-              Demander un devis
-            </h3>
-            <p className="text-muted mb-6">
-              Contactez-nous pour discuter de votre projet et recevoir une proposition personnalisée
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href={`mailto:${PRACTICE_INFO.email}?subject=Demande de devis - Ostéopathie en entreprise`}
-                className="inline-flex items-center gap-2 bg-brand-700 hover:bg-brand-900 text-white px-8 py-4 rounded-2xl font-medium shadow-md transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
-              >
-                <Building2 size={20} />
-                Demander un devis
-              </a>
-              <a
-                href={`tel:${PRACTICE_INFO.phone.replace(/\s/g, "")}`}
-                className="inline-flex items-center gap-2 bg-white hover:bg-brand-100 text-brand-700 border-2 border-brand-300 px-8 py-4 rounded-2xl font-medium transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
-              >
-                Appeler le cabinet
-              </a>
-            </div>
-          </div>
-          </div>
-        </div>
-      </section>
+          </Link>
+          <Link
+            href="/entreprises"
+            className="inline-flex items-center gap-2 bg-brand-700 hover:bg-brand-900 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-medium shadow-md transition-all hover:scale-105 focus:outline-none focus:ring-2 focus:ring-brand-700 focus:ring-offset-2"
+          >
+            <span>En savoir plus : modalités d'intervention, bénéfices concrets, entreprises déjà accompagnées…</span>
+            <ChevronRight size={18} className="flex-shrink-0" />
+          </Link>
+        </motion.div>
+      </Section>
 
       {/* Accès rapide */}
       <Section title="Accès rapide" bg="brand-100">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <div className="space-y-4">
             <h3 className="text-xl font-serif font-semibold text-brand-900">
               Adresse
             </h3>
             <p className="text-muted">{PRACTICE_INFO.address}</p>
-            <div className="space-y-2">
-              <Badge>{PRACTICE_INFO.access.bus}</Badge>
-              <Badge>{PRACTICE_INFO.access.parking}</Badge>
-              <Badge>{PRACTICE_INFO.access.floor}</Badge>
+            <div className="space-y-2 text-muted">
+              <p>{PRACTICE_INFO.access.bus}</p>
+              <p>{PRACTICE_INFO.access.parking}</p>
+              <p>{PRACTICE_INFO.access.floor}</p>
             </div>
           </div>
           <div className="bg-brand-100 rounded-2xl p-4">
@@ -418,6 +543,45 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </Section>
+
+      {/* Galerie du cabinet */}
+      <Section title="Le cabinet" bg="white">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[
+            { name: "cabinet-1", alt: "Cabinet d'ostéopathie - Intérieur", useImage: true },
+            { src: "/images/cabinet-interieur.png", alt: "Cabinet d'ostéopathie - Intérieur", useImage: false },
+            { src: "/images/cabinet-facade.png", alt: "Cabinet d'ostéopathie - Façade", useImage: false },
+            { name: "facade", alt: "Façade du cabinet d'ostéopathie", useImage: true },
+          ].map((img, index) => {
+            const imgSrc = img.useImage ? `/images/cabinet/${img.name}.webp` : img.src;
+            return (
+              <div
+                key={index}
+                className="relative w-full h-[400px] bg-brand-100 rounded-2xl overflow-hidden group"
+              >
+                {img.useImage ? (
+                  <Image
+                    src={imgSrc}
+                    alt={img.alt}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={index < 2}
+                  />
+                ) : (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={imgSrc}
+                    alt={img.alt}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    loading={index < 2 ? "eager" : "lazy"}
+                  />
+                )}
+              </div>
+            );
+          })}
         </div>
       </Section>
 
