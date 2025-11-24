@@ -56,13 +56,19 @@ export const metadata: Metadata = {
         height: 630,
         alt: "Colombine Poupard, Ostéopathe D.O à Marcq-en-Barœul",
       },
+      {
+        url: "/logo.png",
+        width: 512,
+        height: 512,
+        alt: "Logo Colombine Poupard, Ostéopathe D.O",
+      },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ostéopathe à Marcq-en-Barœul – Colombine Poupard D.O",
     description: "Colombine Poupard, ostéopathe D.O à Marcq-en-Barœul. Consultations adultes, femmes enceintes, nourrissons, sportifs.",
-    images: ["/og-image.jpg"],
+    images: ["/og-image.jpg", "/logo.png"],
   },
   alternates: {
     canonical: "https://www.colombine-poupard-osteopathe.fr",
@@ -77,6 +83,16 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  icons: {
+    icon: [
+      { url: "/logo.png", sizes: "any", type: "image/png" },
+      { url: "/logo.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/logo.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: "/logo.png",
   },
 };
 
